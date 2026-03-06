@@ -75,6 +75,13 @@ main() #just call main()
 - C library logic changed:
 Add libraries by changing `self.headers=` in the compiler.
 Change the `subprocess.run("clang", ...)` to link your libraries
+Libraries already hardcoded in the python script:
+  stdio.h
+  stdlib.h
+  time.h
+  unistd.h
+  math.h
+
 No need for writing `extern` now, just call the function like:
 `CreateWindow(800,600,"Title")`
 - Can call anything in C you like:
@@ -82,6 +89,7 @@ Except for stuff that the compiler thinks that is in luaBase, you can basically 
 Like:
 `struct Player {...}`
 #alrighty byeee
+
 
 
 
