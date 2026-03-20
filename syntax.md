@@ -68,7 +68,7 @@ function main()
 end
 main() #just call main()
 
-#Syntax changes in v2.3.0:
+#Syntax changes in v2.2.0:
 - Function declaration changed:
 `function myfunc(){}` instead of `function myfunc() end`
 
@@ -88,6 +88,13 @@ No need for writing `extern` now, just call the function like:
 Except for stuff that the compiler thinks that is in luaBase, you can basically use any C feature you want.
 Like:
 `struct Player {...}`
+#############################
+#Syntax Changes in 2.3.0:
+new keyword added: `link`
+`link` is basically the same as `#include`
+You need to tell the compiler your include directories with `<compile_command> -l"PATH/TO/INCLUDE/DIRECTORY`
+For linking libraries, add: `<compile_command> -g"PATH/TO/LIBRARY"` in your compile command
+Also, the `link` `-l` version uses .h files.
 #alrighty byeee
 
 
