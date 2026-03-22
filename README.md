@@ -5,5 +5,7 @@ Also, you can find the package manager, foundation, for luaBase at: https://gith
 There, you can find all the packages you need or you can also install the foundation.exe in releases, which is the main package manager and installs or updates packages depending on if you have the package or not.
 Rest of the information for foundation will be there at the given link.
 
+Also, you can find the build system, lbmake, for luaBase at: https://github.com/Mebecool1/lbmake
+
 
 
