@@ -88,16 +88,16 @@ No need for writing `extern` now, just call the function like:
 Except for stuff that the compiler thinks that is in luaBase, you can basically use any C feature you want.
 Like:
 `struct Player {...}`
-#############################
+########################################
 #Syntax Changes in 2.3.0:
 new keyword added: `link`
 `link` is basically the same as `#include`
 You need to tell the compiler your include directories with `<compile_command> -l"PATH/TO/INCLUDE/DIRECTORY`
 For linking libraries, add: `<compile_command> -g"PATH/TO/LIBRARY"` in your compile command
 Also, the `link` `-l` version uses .h files.
-#alrighty byeee
 
-#####################
+
+####################################
 #Syntax/Features Changes in 2.4.3:
 new keyord added: `ptr`
 when you use `ptr int x;`, it translates to `int* x;` internally. of course, you can make the ptr to any type you want.
@@ -124,6 +124,22 @@ print(array[2], " ", array[1], "\n")
 printf("%d  %d\n", array[2], array[1])
 #will output: 30  2.
 ```
+
+new variable types added:
+-long
+-short
+-__m256
+
+function declaration changed:
+from:
+`function myfunc(){}`
+to:
+`function void myfunc(){}`
+or:
+`function int myfunc(){}`
+or what ever your function's return type is, the formula is:
+`function type functionName(){}`
+#alrighty byeee
 
 
 
