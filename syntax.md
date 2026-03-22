@@ -97,6 +97,35 @@ For linking libraries, add: `<compile_command> -g"PATH/TO/LIBRARY"` in your comp
 Also, the `link` `-l` version uses .h files.
 #alrighty byeee
 
+#####################
+#Syntax/Features Changes in 2.4.3:
+new keyord added: `ptr`
+when you use `ptr int x;`, it translates to `int* x;` internally. of course, you can make the ptr to any type you want.
+new keyword added: `type`
+`type` allows you to make custom structs like:
+```
+type Vec2 {
+  float x
+  float y
+}
+#later in code
+Vec2 pos;
+pos.x = 10;
+pos.y = 5;
+```
+
+new feature added: arrays
+you use them like:
+```
+int array[5] = {10,20,30,40,50}
+array[1] = 2;
+print(array[2], " ", array[1], "\n")
+#or, better:
+printf("%d  %d\n", array[2], array[1])
+#will output: 30  2.
+```
+
+
 
 
 
