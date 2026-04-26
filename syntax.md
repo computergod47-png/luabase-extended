@@ -1,5 +1,5 @@
 # luaBase (lb) Language Specification v2.7.3
-
+Please view this file using an actual markdown reader, not the default github markdown preview.
 ---
 
 ## 1. Core Data Types
