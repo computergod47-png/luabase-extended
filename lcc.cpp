@@ -1,5 +1,5 @@
 // luabasec.cpp — LuaBase transpiler, fully standalone C++
-// Build: clang++ -o luabasec luabasec.cpp -O2 -std=c++17
+// Build: g++ -o lcc lcc.cpp -O2 -std=c++17
 //
 // Converted from Python implementation. All features F01-F30 preserved.
 // All bug fixes BUG-A through BUG-M preserved.
@@ -1639,6 +1639,9 @@ int main(int argc, char** argv) {
     }
 
     std::string inf     = argv[1];
+    if (inf == "-v") {
+        std::cout << "luabase++ compiler version 2.9.1, forked from Mebecool1."; return 0;
+    }
     std::string out_bin = argv[2];
 
     if (!fs::exists(inf)) die("Input file not found: '" + inf + "'", 1);
@@ -1670,6 +1673,7 @@ int main(int argc, char** argv) {
         if (arg.size()>2 && arg.substr(0,2)=="-w")
             custom_includes.push_back("-L"+arg.substr(2));
         if (arg=="-debug") dbuild = true;
+        
     }
 
     std::string source;
