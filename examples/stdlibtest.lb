@@ -1,2 +1,4 @@
 link "MathGraphic.lh"
 link "Math.lh"
+vec3f a = v3(1,2,3)
+printfmt("its: %f, %f, %f", a.x, a.y, a.z)
