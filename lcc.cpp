@@ -1635,6 +1635,7 @@ int main(int argc, char** argv) {
     }
 
     if (argc < 3) {
+        log("luabase version 2.9.1 forked from Mebecool1");
         die("Usage: luabasec <in.lb> <out> [extra.c] [-lPATH] [-gLIB] [-wLIBDIR] [-c] [-s] [--asm] [--main]", 1);
     }
 
