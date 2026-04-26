@@ -127,7 +127,9 @@ $$
 \text{-main} & \text{Skip top-level auto-main} \\ \hline
 \text{-l[path]} & \text{Add include directory} \\ \hline
 \text{-g[lib]} & \text{Link external library} \\ \hline
-\text{-w[lib]} & \text{Library Paths}
+\text{-w[libpath]} & \text{Library Paths}
+\\ \hline
+\text{-debug} & \text{Skip Optimization Phase}
 \\ \hline
 \end{array}
 
