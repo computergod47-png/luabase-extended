@@ -7,5 +7,6 @@ Rest of the information for foundation will be there at the given link.
 
 Also, you can find the build system, lbmake, for luaBase at: https://github.com/Mebecool1/lbmake
 
+The precompiled binary of lcc (name of luabase compiler) can be found in the main tree only.
 
 
