@@ -138,6 +138,7 @@ class Lexer {
             {"double",TT::DOUBLE},{"__m256",TT::M256},{"void",TT::VOID},
             {"short",TT::SHORT},{"__m256i",TT::M256I},
             {"type",TT::TYPE},{"elseif",TT::ELSEIF},{"ptr",TT::PTR},
+            {"and",TT::AND},{"or",TT::OR},
             {"for",TT::FOR},{"break",TT::BREAK},{"continue",TT::CONTINUE},
             {"not",TT::NOT},{"println",TT::PRINTLN},{"assert",TT::ASSERT},
             {"switch",TT::SWITCH},{"case",TT::CASE},{"default",TT::DEFAULT_KW},
@@ -344,6 +345,7 @@ static std::string join(const std::vector<std::string>& v, const std::string& se
 // CTranspiler
 // ===========================================================================
 class CTranspiler {
+    bool isSubTranspiler = false;
     std::vector<Token> tokens;
     size_t pos{0};
 
@@ -462,7 +464,11 @@ class CTranspiler {
             std::string f_name = safe_name(expect(TT::IDENTIFIER, false).value);
             if (current().type == TT::LSBRACKET) {
                 advance();
-                std::string sz = expect(TT::NUMBER, false).value;
+                std::string sz;
+                if (current().type == TT::NUMBER || current().type == TT::IDENTIFIER)
+                    sz = advance().value;
+                else
+                    sz = expect(TT::NUMBER, false).value; // triggers proper error
                 expect(TT::RSBRACKET, false);
                 fields.push_back(f_type + " " + f_name + "[" + sz + "];");
             } else {
@@ -953,7 +959,12 @@ class CTranspiler {
             // array
             if (current().type==TT::LSBRACKET) {
                 advance();
-                std::string size = expect(TT::NUMBER,false).value;
+                // accept NUMBER or IDENTIFIER (e.g. #define'd macro)
+                std::string size;
+                if (current().type==TT::NUMBER || current().type==TT::IDENTIFIER)
+                    size = advance().value;
+                else
+                    size = expect(TT::NUMBER,false).value; // triggers proper error
                 expect(TT::RSBRACKET,false);
                 var_types[name] = vtype_raw + "_ARRAY";
                 std::string val;
@@ -1435,6 +1446,7 @@ class CTranspiler {
         std::vector<Token> lh_toks = Lexer(lh_source).tokenize();
 
         CTranspiler lh(lh_toks);
+        lh.isSubTranspiler = true;
         lh._source_dir      = fs::path(canonical).parent_path().string();
         lh._source_file     = canonical;
         lh._lh_included     = _lh_included;
@@ -1468,12 +1480,22 @@ class CTranspiler {
                 lh.parse_statement();
             }
         }
-        _lh_included = lh._lh_included;
-    }
+        for (const auto& h : lh.headers)   this->headers.push_back(h);
+        for (const auto& f : lh.functions) this->functions.push_back(f);
+
+    
+        for (auto const& [name, type_str] : lh.var_types) {
+            this->var_types[name] = type_str;
+        }
+
+    
+        this->_lh_included = lh._lh_included;
+        }
 
 public:
     explicit CTranspiler(std::vector<Token> toks) : tokens(std::move(toks)) {
         // build default headers block
+        if (!isSubTranspiler){
         headers.push_back(
             "#include <stdio.h>\n"
             "#include <stdbool.h>\n"
@@ -1485,6 +1507,8 @@ public:
             "#include <setjmp.h>\n"
         );
         headers.push_back(
+            "#ifndef __LUABASE_RUNTIME__\n"
+            "#define __LUABASE_RUNTIME__\n"
             "char _lb_buf[512];\n"
             "char _lb_buf2[512];\n"
             "static inline char* _lb_s(char* x)        { return x; }\n"
@@ -1519,7 +1543,9 @@ public:
             "        fprintf(stderr,\"[throw] unhandled: %s\\n\",msg); exit(1);\n"
             "    }\n"
             "}\n"
+            "#endif /* __LUABASE_RUNTIME__ */\n"
         );
+    }
     }
 
     std::string transpile(const std::string& source_dir,
