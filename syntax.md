@@ -127,5 +127,8 @@ $$
 \text{-main} & \text{Skip top-level auto-main} \\ \hline
 \text{-l[path]} & \text{Add include directory} \\ \hline
 \text{-g[lib]} & \text{Link external library} \\ \hline
+\text{-w[lib]} & \text{Library Paths}
+\\ \hline
 \end{array}
+
 $$
