@@ -1,9 +1,25 @@
 # luaBase (lb) Language Specification v2.7.3
 Please view this file using an actual markdown reader, not the default github markdown preview.
 ---
-
-## 1. Core Data Types
+## 1. Installation
 $$
+\text{bash terminal} \to \text{install.sh}
+\\
+\text{exact command} \to \text{"./install.sh"}
+$$
+---
+## 2. Core Data Types and Prints.
+# Printing
+$$
+\text{print("hello world! your name is: ", name, "\text{\textbackslash}n")}\ \ //needs\ manual \ newline\ though.
+\\
+\text{println("hello world! you are: ", name)}\ \ //places\ newline\ automatically.
+\\
+printfmt("hello\ world!\ you\ are: \%s\text{\textbackslash}n",\ name)\ \ //direct\ c\ printf\ call.
+$$
+# Data Types
+$$
+
 \begin{array}{|l|l|l|}
 \hline
 \mathbf{Category} & \mathbf{luaBase\ Type} & \mathbf{C\ Representation} \\ \hline
@@ -17,9 +33,9 @@ $$
 \end{array}
 $$
 
----
 
-## 2. Variables and Arrays
+
+## 3. Variables and Arrays
 $$
 \begin{array}{l}
 \text{int count = 0} \\
@@ -31,7 +47,7 @@ $$
 
 ---
 
-## 3. Control Flow
+## 4. Control Flow
 
 ### If-Then-Else
 $$
@@ -60,7 +76,7 @@ $$
 
 ---
 
-## 4. Functions
+## 5. Functions
 $$
 \begin{array}{l}
 \text{function int fib(int n) \{} \\
@@ -73,7 +89,7 @@ $$
 
 ---
 
-## 5. Memory Operations
+## 6. Memory Operations
 $$
 \begin{array}{l}
 \text{ptr int p = \&x} \\
@@ -87,7 +103,7 @@ $$
 
 ---
 
-## 6. Structures and Enums
+## 7. Structures and Enums
 $$
 \begin{array}{l}
 \text{type Player \{} \\
@@ -102,7 +118,7 @@ $$
 
 ---
 
-## 7. Advanced Features
+## 8. Advanced Features
 $$
 \begin{array}{l}
 \text{try \{} \\
@@ -117,7 +133,7 @@ $$
 
 ---
 
-## 8. Compiler Flags (lcc)
+## 9. Compiler Flags (lcc)
 $$
 \begin{array}{|l|l|}
 \hline
@@ -132,5 +148,12 @@ $$
 \text{-debug} & \text{Skip Optimization Phase}
 \\ \hline
 \end{array}
+
+$$
+---
+## Uninstallation
+$$
+\text{easiest way:}
+\\
 
 $$
