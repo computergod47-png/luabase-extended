@@ -9,15 +9,15 @@ $$
 $$
 ---
 ## 2. Core Data Types and Prints.
-# Printing
+### Printing
 $$
-\text{print("hello world! your name is: ", name, "\text{\textbackslash}n")}\ \ //needs\ manual \ newline\ though.
+\text{print("hello world! your name is: ", name, "\text{\textbackslash}n")}\ \ \\//needs\ manual \ newline\ though.
 \\
-\text{println("hello world! you are: ", name)}\ \ //places\ newline\ automatically.
+\text{println("hello world! you are: ", name)}\ \ \\//places\ newline\ automatically.
 \\
-printfmt("hello\ world!\ you\ are: \%s\text{\textbackslash}n",\ name)\ \ //direct\ c\ printf\ call.
+printfmt("hello\ world!\ you\ are: \%s\text{\textbackslash}n",\ name)\ \ \\//direct\ c\ printf\ call.
 $$
-# Data Types
+### Data Types
 $$
 
 \begin{array}{|l|l|l|}
@@ -29,7 +29,7 @@ $$
 \text{Text} & \text{str, char} & \text{char[256], char} \\ \hline
 \text{Logic} & \text{bool} & \text{bool (true/false)} \\ \hline
 \text{SIMD} & \text{\_\_m256, \_\_m256i} & \text{AVX Vector Intrinsics} \\ \hline
-\text{Pointers} & \text{ptr } \langle type \rangle & \text{Type-safe pointers (e.g., ptr int)} \\ \hline
+\text{Pointers} & \text{ptr } \langle type \rangle & \text{Type-safe pointers } \\ \hline
 \end{array}
 $$
 
@@ -151,9 +151,32 @@ $$
 
 $$
 ---
-## Uninstallation
+## 10. Uninstallation
 $$
 \text{easiest way:}
 \\
-
+bash \to install.sh
+\\
+exact\ command \to \text{"./install.sh"}
 $$
+---
+## 11. Standard Library
+### Accessing the standard library
+---
+$$
+\text{Just do: link "library.lh"}\\
+\text{Standard library is installed when you do ./install.sh}\\
+\text{AUTOMATICALLY!!}
+$$
+---
+### List of LH files in the standard library:
+$$
+\begin{array}{|l|l|}
+\hline
+\text{Name} & \text{Purpose} \\ \hline
+\text{Math.lh} & \text{General purpose Math library} \\ \hline
+\text{stdlib.lh} & \text{Provide general functions} \\ \hline
+\text{MathGraphic.lh} & \text{Provide Graphical Math functions} \\ \hline
+\end{array}
+
+$$ 
